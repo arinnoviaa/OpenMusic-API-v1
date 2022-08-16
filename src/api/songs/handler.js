@@ -1,7 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 class SongsHandler {
-  constructor(service) {
+  constructor(service, validator) {
     this._service = service;
+    this._validator = validator;
 
     this.postSongHandler = this.postSongHandler.bind(this);
     this.getSongsHandler = this.getSongsHandler.bind(this);
@@ -12,6 +13,7 @@ class SongsHandler {
 
   postSongHandler(request, h) {
     try {
+      this._validator.validateSongPayload(request.payload);
       const {
         title, year, performer, genre, duration, albumId = 'null',
       } = request.payload;
@@ -70,6 +72,7 @@ class SongsHandler {
 
   putSongByIdHandler(request, h) {
     try {
+      this._validator.validateSongPayload(request.payload);
       const { id } = request.params;
       this._service.editSongById(id, request.payload);
 
@@ -82,7 +85,7 @@ class SongsHandler {
         status: 'fail',
         message: error.message,
       });
-      response.code(404);
+      response.code(400);
       return response;
     }
   }
