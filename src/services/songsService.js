@@ -12,7 +12,7 @@ class SongsService {
     const id = nanoid(16);
 
     const newSong = {
-      title, year, performer, genre, duration, albumId,
+      title, year, performer, genre, duration, albumId, id,
     };
 
     this._songs.push(newSong);
