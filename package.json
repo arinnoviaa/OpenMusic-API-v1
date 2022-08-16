@@ -20,8 +20,10 @@
   "homepage": "https://github.com/arinnoviaa/OpenMusic-API-v1#readme",
   "dependencies": {
     "@hapi/hapi": "^20.2.2",
+    "dotenv": "^16.0.1",
     "joi": "^17.6.0",
-    "nanoid": "^3.1.20"
+    "nanoid": "^3.1.20",
+    "pg": "^8.7.3"
   },
   "devDependencies": {
     "eslint": "^8.22.0",

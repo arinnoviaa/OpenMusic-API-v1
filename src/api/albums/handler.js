@@ -17,7 +17,7 @@ class AlbumsHandler {
 
   postAlbumHandler(request, h) {
     try {
-      this._validator.validateSongPayload(request.payload);
+      this._validator.validateAlbumPayload(request.payload);
       const { name, year } = request.payload;
       const albumId = this._service.addAlbum({ name, year });
 
@@ -95,7 +95,7 @@ class AlbumsHandler {
 
   putAlbumByIdHandler(request, h) {
     try {
-      this._validator.validateSongPayload(request.payload);
+      this._validator.validateAlbumPayload(request.payload);
       const { id } = request.params;
       this._service.editAlbumById(id, request.payload);
 
